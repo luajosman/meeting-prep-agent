@@ -6,6 +6,41 @@ vor dem Termin ab.
 
 Gebaut als Teil der Kuro Founders-Associate-Challenge, Aufgabe 2.
 
+---
+
+## Das Wichtigste in Kurzform
+
+**Was es tut.** Ein Befehl. Der Agent zieht einen Termin aus Google
+Calendar, liest Firma und Ansprechpartner aus der Beschreibung,
+recherchiert beides im Web und legt einen belegten Prep-Brief als eigenen
+Kalenderblock 15 Minuten vor dem Termin ab. Laufzeit rund 90 Sekunden,
+Kosten etwa 20 Cent.
+
+**Stack.** Python, Google Calendar API, Claude API mit dem serverseitigen
+`web_search`-Tool. Keine Datenbank, kein Server, keine Queue. Drei Dateien.
+
+**Die vier Entscheidungen, die zaehlen:**
+
+| Entscheidung | Warum |
+|---|---|
+| Python statt n8n | Der Wert steckt im Prompt, nicht im Workflow. Prompts will man versionieren und diffen. |
+| Claudes eingebaute Websuche | Spart Such-Provider, Fetcher und HTML-Extraktion, also drei Fehlerquellen. Citations kommen mit. |
+| Kein LinkedIn-Scraping | Fragil und ToS-Bruch. Findet der Agent nichts, schreibt er das hin, statt zu erfinden. |
+| Eigener Prep-Block statt Kundentermin | Der Brief ist internes Material. Gaeste sehen Terminbeschreibungen. Ein Event ohne Gaeste schliesst den Fehler strukturell aus. |
+
+**Der eigentliche Kern ist der Prompt,** nicht der Code. Er definiert zehn
+feste Abschnitte, von denen zwei den Unterschied machen:
+*Digitalisierungs-Signale* statt Firmenportrait, weil eine offene Stelle
+mehr ueber Kaufbereitschaft sagt als jede Umsatzzahl. Und *Nicht
+verifiziert*, weil ein Brief, der belegt und vermutet nicht trennt, im
+Vertrieb aktiv gefaehrlich ist.
+
+**Groesste bekannte Schwaeche.** Der Brief ist zu lang. Er wird zehn
+Minuten vor dem Termin auf dem Handy gelesen, nicht am Schreibtisch.
+Naechster Schritt waere Kuerzen auf eine Bildschirmseite.
+
+---
+
 ## Architektur
 
 ```mermaid
@@ -114,7 +149,7 @@ der Browser bleibt zu.
 
 ---
 
-## Architektur und Entscheidungen
+## Entscheidungen im Detail
 
 ### Python statt n8n oder Zapier
 
