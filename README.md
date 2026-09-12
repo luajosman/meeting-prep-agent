@@ -165,6 +165,15 @@ zweiten anzulegen. `--in-event` stellt das alte Verhalten wieder her.
 
 ## Was im Brief steht, und warum
 
+Zehn Abschnitte, immer dieselben, in drei Gruppen:
+
+| Gruppe | Abschnitte |
+|---|---|
+| Kontext | Worum es geht · Die Firma · Digitalisierungs-Signale |
+| Menschen und Thesen | Gespraechspartner · Schmerz-Hypothesen · Discovery-Fragen |
+| Munition | Passende Referenzen · Erwartbare Einwaende · Next-Step-Ask |
+| Absicherung | Quellen · Nicht verifiziert |
+
 Ein Prep-Brief, der Firmengeschichte und Gruendungsjahr zusammenfasst, ist
 wertlos. Die Abschnitte sind danach gebaut, was eine Verkaufsentscheidung
 tatsaechlich beeinflusst:
@@ -183,6 +192,25 @@ tatsaechlich beeinflusst:
 Wenn der Platz im Kalenderfeld knapp wird, faellt zuerst die **Quellenliste**
 weg, nie der Abschnitt "Nicht verifiziert". Was man nachschlagen kann, ist
 verzichtbarer als das, was vor einer falschen Aussage im Termin schuetzt.
+
+### Jeder Lauf findet etwas anderes
+
+Fuenf Laeufe zur selben Firma haben unterschiedliche Fakten geliefert. Ein
+Lauf fand RIB iTWO mit Belegen von 2011, ein anderer thinkproject mit
+SAP-Anbindung, ein dritter den Start-up-Foerderer MORGENbau samt
+KI-Investment. Zu einer der beiden Personen lieferte ein Lauf einen
+Werdegang, ein spaeterer meldete das Profil als nicht abrufbar.
+
+Das ist kein Bug, sondern die Natur von Websuche: andere Treffer, andere
+Reihenfolge, andere Schwerpunkte. Es ist aber der Grund, warum der Brief
+seine Quellen und Luecken offenlegen muss. Ein Agent, der bei jedem
+Durchlauf gleich selbstbewusst klingt und trotzdem unterschiedliche Fakten
+liefert, ist gefaehrlich. Einer, der sagt, worauf er sich stuetzt und was
+er nicht belegen konnte, ist benutzbar.
+
+Praktische Konsequenz: **vor einem echten Termin zwei bis drei Kernzahlen
+selbst gegenpruefen.** Der Brief ersetzt keine Verifikation, er macht sie
+nur schnell.
 
 ---
 
