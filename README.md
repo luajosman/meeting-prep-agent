@@ -6,11 +6,60 @@ vor dem Termin ab.
 
 Gebaut als Teil der Kuro Founders-Associate-Challenge, Aufgabe 2.
 
+## Architektur
+
+```mermaid
+flowchart TD
+    CAL["Google Calendar<br/>Kundentermin"]
+    P1["HTML nach Klartext"]
+    P2["Firma, Website, Ziel<br/>Teilnehmer aus Beschreibung"]
+    LLM["Claude API<br/>claude-opus-5"]
+    WEB[("Web")]
+    RAW["Brief, 10 Abschnitte"]
+    CLEAN["Markdown nach Klartext<br/>Ankuendigungssatz entfernen"]
+    FIT{"Passt in<br/>8.000 Zeichen?"}
+    DROP["Quellenliste entfernen<br/>Nicht verifiziert behalten"]
+    OUT["Prep-Block anlegen<br/>15 Min vor Termin<br/>ohne Gaeste"]
+
+    CAL -->|"events.list"| P1
+    P1 --> P2
+    P2 --> LLM
+    LLM <-->|"web_search, max 12"| WEB
+    LLM --> RAW
+    RAW --> CLEAN
+    CLEAN --> FIT
+    FIT -->|ja| OUT
+    FIT -->|nein| DROP
+    DROP --> OUT
+    OUT -->|"events.insert / patch"| CAL
 ```
-Google Calendar ──► Parser ──► Claude API (+ web_search) ──► Brief
-                                                              │
-                              Prep-Block im Kalender ◄────────┘
+
+### Warum zwei Termine statt einem
+
+```mermaid
+flowchart LR
+    subgraph VORHER["Erste Version"]
+        direction TB
+        A1["Kundentermin<br/>15:00"]
+        A2["Beschreibung:<br/>Notizen + Prep-Brief"]
+        A3["Gast wird eingeladen<br/>und liest mit"]
+        A1 --- A2
+        A2 -.->|Risiko| A3
+    end
+
+    subgraph NACHHER["Jetzt"]
+        direction TB
+        B1["Prep-Block 14:45<br/>ohne Gaeste<br/>enthaelt den Brief"]
+        B2["Kundentermin 15:00<br/>nur eigene Notizen"]
+        B1 --> B2
+    end
+
+    VORHER ==>|Umbau| NACHHER
 ```
+
+Der Brief ist internes Vertriebsmaterial. Gaeste eines Termins sehen dessen
+Beschreibung. Ein eigenes Event ohne Gaeste schliesst den Fehler
+strukturell aus, statt ihn nur per Konvention zu verbieten.
 
 ---
 
