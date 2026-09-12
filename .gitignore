@@ -1,0 +1,13 @@
+# Google OAuth - NIEMALS committen
+credentials.json
+token.json
+client_secret*.json
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.env
+
+# macOS
+.DS_Store
